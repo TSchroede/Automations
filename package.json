@@ -1,4 +1,9 @@
 {
+  "name": "cypress-automation",
+  "scripts": {
+    "cy:open": "cypress open",
+    "cy:run": "cypress run --e2e --browser chrome"
+  },
   "dependencies": {
     "cypress": "^10.2.0"
   }
