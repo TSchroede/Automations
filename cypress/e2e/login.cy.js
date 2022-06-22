@@ -12,4 +12,12 @@ describe('Login Page', () => {
   context('invalid username states', function () {
     it('test1', function () {});
   });
+
+  context('invalid password states', function () {
+    it('test1', function () {});
+  });
+
+  context('success', function () {
+    it('test1', function () {});
+  });
 });
