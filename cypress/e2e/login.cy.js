@@ -15,15 +15,15 @@ describe('Login Page', () => {
 
   context('invalid username states', function () {
     it('wrong username', function () {
-      cy.get('@username').clear().type();
-      cy.get('@password').clear().type();
+      cy.get('@username').clear().type(`${this.testdata.username}1`);
+      cy.get('@password').clear().type(`${this.testdata.password}{enter}`);
       cy.contains('Wrong email or password').should('be.visible');
       cy.url().should('include', 'account.tagboard.com/signin');
       cy.screenshot(`${Cypress.spec.name} : ${Cypress.currentTest.title}`);
     });
     it('no username', function () {
       cy.get('@username').clear();
-      cy.get('@password').clear().type();
+      cy.get('@password').clear().type(`${this.testdata.password}{enter}`);
       cy.url().should('include', 'account.tagboard.com/signin');
       cy.screenshot(`${Cypress.spec.name} : ${Cypress.currentTest.title}`);
     });
@@ -31,14 +31,14 @@ describe('Login Page', () => {
 
   context('invalid password states', function () {
     it('wrong password', function () {
-      cy.get('@username').clear().type();
-      cy.get('@password').clear().type();
+      cy.get('@username').clear().type(`${this.testdata.username}`);
+      cy.get('@password').clear().type(`${this.testdata.password}1{enter}`);
       cy.url().should('include', 'account.tagboard.com/signin');
       cy.screenshot(`${Cypress.spec.name} : ${Cypress.currentTest.title}`);
     });
 
     it('no password', function () {
-      cy.get('@username').clear().type();
+      cy.get('@username').clear().type(`${this.testdata.username}`);
       cy.get('@password').clear();
       cy.url().should('include', 'account.tagboard.com/signin');
       cy.screenshot(`${Cypress.spec.name} : ${Cypress.currentTest.title}`);
@@ -47,8 +47,8 @@ describe('Login Page', () => {
 
   context('success', function () {
     it('sucessful login', function () {
-      cy.get('@username').clear().type();
-      cy.get('@password').clear().type();
+      cy.get('@username').clear().type(`${this.testdata.username}`);
+      cy.get('@password').clear().type(`${this.testdata.password}{enter}`);
       cy.url().should('include', '');
       cy.screenshot(`${Cypress.spec.name} : ${Cypress.currentTest.title}`);
     });
