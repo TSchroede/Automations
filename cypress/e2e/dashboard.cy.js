@@ -46,5 +46,10 @@ describe('Dashboard Smoke Test', () => {
   });
   it('tagboards', function () {
     cy.get('#tagboards').should('be.visible');
+
+    // using custom iframe command to retry until body is loaded.
+    cy.get('#tagboards > iframe').getIframe(() => {
+      cy.get('.tagboards.clearfix').should('be.visible');
+    });
   });
 });
