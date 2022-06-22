@@ -1,8 +1,9 @@
 /// <reference types="cypress" />
 
 describe('Producer Smoke Test', () => {
-  const username = 'webmaster@tagboard.com';
-  const password = 'zty7qxh.wce7xrj0HMU';
+  // env variables
+  const username = Cypress.env('username');
+  const password = Cypress.env('password');
 
   before(function () {
     cy.visit('https://producer.tagboard.com/');

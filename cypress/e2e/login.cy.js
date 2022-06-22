@@ -1,12 +1,14 @@
 /// <reference types="cypress" />
 
 describe('Login Page', () => {
-  const username = 'webmaster@tagboard.com';
-  const password = 'zty7qxh.wce7xrj0HMU';
+  // env variables
+  const username = Cypress.env('username');
+  const password = Cypress.env('password');
 
   beforeEach(function () {
     cy.visit('/');
     cy.url().should('include', 'account.tagboard.com/signin');
+
     // exposing the login page
     cy.contains('Continue with your email').click({ force: true });
     cy.url().should('include', '/login');
