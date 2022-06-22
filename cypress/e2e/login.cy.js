@@ -1,5 +1,3 @@
-const cypress = require('cypress');
-
 describe('Login Page', () => {
   beforeEach(function () {
     cy.visit();
