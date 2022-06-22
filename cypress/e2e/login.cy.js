@@ -1,10 +1,11 @@
-describe('Login Page', () => {
-  beforeEach(function () {
-    cy.fixture('login').then(function (testdata) {
-      this.testdata = testdata;
-    });
+/// <reference types="cypress" />
 
-    cy.visit();
+describe('Login Page', () => {
+  const username = 'webmaster@tagboard.com';
+  const password = 'zty7qxh.wce7xrj0HMU';
+
+  beforeEach(function () {
+    cy.visit('/');
     cy.url().should('include', 'account.tagboard.com/signin');
     // exposing the login page
     cy.contains('Continue with your email').click({ force: true });
@@ -15,15 +16,15 @@ describe('Login Page', () => {
 
   context('invalid username states', function () {
     it('wrong username', function () {
-      cy.get('@username').clear().type(`${this.testdata.username}1`);
-      cy.get('@password').clear().type(`${this.testdata.password}{enter}`);
+      cy.get('@username').clear().type(`${username}1`);
+      cy.get('@password').clear().type(`${password}{enter}`);
       cy.contains('Wrong email or password').should('be.visible');
       cy.url().should('include', 'account.tagboard.com/signin');
       cy.screenshot(`${Cypress.spec.name} : ${Cypress.currentTest.title}`);
     });
     it('no username', function () {
       cy.get('@username').clear();
-      cy.get('@password').clear().type(`${this.testdata.password}{enter}`);
+      cy.get('@password').clear().type(`${password}{enter}`);
       cy.url().should('include', 'account.tagboard.com/signin');
       cy.screenshot(`${Cypress.spec.name} : ${Cypress.currentTest.title}`);
     });
@@ -31,14 +32,14 @@ describe('Login Page', () => {
 
   context('invalid password states', function () {
     it('wrong password', function () {
-      cy.get('@username').clear().type(`${this.testdata.username}`);
-      cy.get('@password').clear().type(`${this.testdata.password}1{enter}`);
+      cy.get('@username').clear().type(`${username}`);
+      cy.get('@password').clear().type(`${password}1{enter}`);
       cy.url().should('include', 'account.tagboard.com/signin');
       cy.screenshot(`${Cypress.spec.name} : ${Cypress.currentTest.title}`);
     });
 
     it('no password', function () {
-      cy.get('@username').clear().type(`${this.testdata.username}`);
+      cy.get('@username').clear().type(`${username}`);
       cy.get('@password').clear();
       cy.url().should('include', 'account.tagboard.com/signin');
       cy.screenshot(`${Cypress.spec.name} : ${Cypress.currentTest.title}`);
@@ -47,9 +48,9 @@ describe('Login Page', () => {
 
   context('success', function () {
     it('sucessful login', function () {
-      cy.get('@username').clear().type(`${this.testdata.username}`);
-      cy.get('@password').clear().type(`${this.testdata.password}{enter}`);
-      cy.url().should('include', '');
+      cy.get('@username').clear().type(`${username}`);
+      cy.get('@password').clear().type(`${password}{enter}`);
+      cy.url().should('include', 'https://account.tagboard.com/dashboard');
       cy.screenshot(`${Cypress.spec.name} : ${Cypress.currentTest.title}`);
     });
   });
