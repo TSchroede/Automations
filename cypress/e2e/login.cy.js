@@ -1,5 +1,9 @@
 describe('Login Page', () => {
   beforeEach(function () {
+    cy.fixture('login').then(function (testdata) {
+      this.testdata = testdata;
+    });
+
     cy.visit();
     cy.url().should('include', 'account.tagboard.com/signin');
     // exposing the login page

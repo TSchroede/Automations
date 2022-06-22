@@ -5,12 +5,6 @@ module.exports = defineConfig({
   viewportHeight: 1080,
   defaultCommandTimeout: 10000,
   screenshotsFolder: './cypress/screenshots',
-  env: {
-    user: {
-      username: 'webmaster@tagboard.com',
-      password: '',
-    },
-  },
   e2e: {
     setupNodeEvents(on, config) {},
     baseUrl: 'https://account.tagboard.com/',
