@@ -10,14 +10,25 @@ describe('Login Page', () => {
   });
 
   context('invalid username states', function () {
-    it('test1', function () {});
+    it('wrong username', function () {
+      cy.get('@username').should('be.visible').clear().type();
+      cy.get('@password').clear().type();
+
+      cy.contains('Wrong email or password').should('be.visible');
+      cy.screenshot(`${Cypress.spec.name} : ${Cypress.currentTest.title}`);
+    });
+    it('no username', function () {});
+    cy.get('@username').should('be.visible').clear();
+    cy.get('@password').clear().type();
+    cy.screenshot(`${Cypress.spec.name} : ${Cypress.currentTest.title}`);
   });
 
   context('invalid password states', function () {
-    it('test1', function () {});
+    it('wrong password', function () {});
+    it('no password', function () {});
   });
 
   context('success', function () {
-    it('test1', function () {});
+    it('sucessful login', function () {});
   });
 });
