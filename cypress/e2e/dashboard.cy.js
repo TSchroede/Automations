@@ -29,6 +29,7 @@ describe('Dashboard Smoke Test', () => {
         cy.get('#applicationLauncherIcon').should('be.visible');
         cy.get('#accountDropdownIcon').should('be.visible');
       });
+      cy.screenshot(`${Cypress.spec.name} : ${Cypress.currentTest.title}`);
     });
     it('Left Navigation', function () {
       cy.get('.left-rail').then(function () {
@@ -43,6 +44,7 @@ describe('Dashboard Smoke Test', () => {
         );
         cy.get('.api-tab').should('be.visible');
       });
+      cy.screenshot(`${Cypress.spec.name} : ${Cypress.currentTest.title}`);
     });
   });
   it('tagboards', function () {
@@ -52,5 +54,6 @@ describe('Dashboard Smoke Test', () => {
     cy.get('#tagboards > iframe').getIframe(() => {
       cy.get('.tagboards.clearfix').should('be.visible');
     });
+    cy.screenshot(`${Cypress.spec.name} : ${Cypress.currentTest.title}`);
   });
 });

@@ -31,6 +31,7 @@ describe('Producer Smoke Test', () => {
         cy.get('#applicationLauncherIcon').should('be.visible');
         cy.get('#accountDropdownIcon').should('be.visible');
       });
+      cy.screenshot(`${Cypress.spec.name} : ${Cypress.currentTest.title}`);
     });
     it('Productions Table', function () {
       cy.get('.productions-table').then(function () {
@@ -58,6 +59,7 @@ describe('Producer Smoke Test', () => {
             });
           });
       });
+      cy.screenshot(`${Cypress.spec.name} : ${Cypress.currentTest.title}`);
     });
   });
 });
